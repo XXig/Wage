@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+	<title>XXig</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="author" content="XXig">
+	<!-- build:css ../css/base.min.css?rev=@@hash -->
+	<link rel="stylesheet" type="text/css" href="../css/base.css?rev=@@hash">
+	<!-- endbuild -->
+	<script>document.documentElement.style.fontSize=window.screen.width/3.75 + 'px'</script>
+</head>
+<body>
+	<div class="load xycenter"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAS1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmYDp0AAAAGXRSTlMAM0wFs8uYZhKAGy4oI1pECqF6aVE9rY1zxQdZqwAAAXNJREFUOMuVkduSgyAMQAOhNSKCtbb2/790Q6imLuyOPQ9mRg65ATXeGA9nMAz8A/oRjyKOHqFmMCYcxWDM0EiYz+lTJMM0Uo5GEqg4cBzhj5ReRd9OqCci6r0DWL5Sq4jaST5A2IQRtfuycJ1tMjahlvS6jz19yDFYJuzjskG6Yd2/TzbzfoBghFCNOD2s8JigQFyntTQjWtLZtc8jQ/Z+FcLRDFVpTNZI1XqZ9c/vuV/e3KFBsG8CXHZaot05LZ4v/T2EUIFTrc3uRtVbxy4dVYxP51zV5aNjDH78uLlMX83cZeIIBb86YfVVP0snLASZWbRbAvD9nfb+bCSAEMVM5RFZe8bcyco+goCvvu9yNNJnKXBzs1RNjiFYrtcFqGcGOU5d3G5TCXmkGeDKAEQWX0WYJCgxt0CbSDObCRpQXmWETYTE4kxQM+fRUcU8Tr80EjrmASrC0DNVShllBRWZTsapoPtMR5GinaCNimeQhVf8AF0PDs6aSayDAAAAAElFTkSuQmCC"></div>
+	<div class="alert xycenter"></div>
+	<div class="wrap" id="app">
+		<div class="header">工资<span>计算器</span></div>
+		<div class="main">
+			<ul v-show="yes" class="tip">
+				<h4>基本工资：</h4>
+				<li>底薪+提成+奖金</li>
+				<h4>提成系数：</h4>
+				<li>日&emsp;报：0.1系数</li>
+				<li>商&emsp;报：0.14系数</li>
+				<li>都市报：0.12系数</li>
+			</ul>
+			<ul v-show="yes" class="txt">
+				<li>底&nbsp;薪&nbsp;工&nbsp;资：
+				<input type="number" v-model="basesalary" placeholder="请输入底薪" Number/>元</li>
+				<li>日&nbsp;报&nbsp;业&nbsp;绩：<input type="number" v-model="rb" placeholder="--" Number/>元</li>
+				<li>商&nbsp;报&nbsp;业&nbsp;绩：<input type="number" v-model="sb" placeholder="--" Number/>元</li>
+				<li>都市报业绩：<input type="number" v-model="dsb" placeholder="--" Number/>元</li>
+			</ul>
+			<ul v-show="no" class="result">
+				<h4>输入信息</h4>
+				<li>底&nbsp;薪&nbsp;工&nbsp;资：{{ basesalary }}元</li>
+				<li>日&nbsp;报&nbsp;业&nbsp;绩：{{ rb }}元</li>
+				<li>商&nbsp;报&nbsp;业&nbsp;绩：{{ sb }}元</li>
+				<li class="line">都市报业绩：{{ dsb }}元</li>
+				<h4><strong>工&emsp;资：</strong>底薪+提成+奖金=<span>{{salary|currency '' "2"}}元</span></h4>
+				<li>底&nbsp;薪&nbsp;工&nbsp;资：{{ basesalary|currency '' "2" }}元</li>
+				<li>提&nbsp;成&nbsp;工&nbsp;资：{{sbsalary+rbsalary+dsbsalary|currency '' "2"}}元</li>
+				<li>奖&nbsp;金&nbsp;工&nbsp;资：{{jjsalary|currency '' "2"}}元</li>
+				<li>日&nbsp;报&nbsp;提&nbsp;成：{{ rbsalary|currency '' "2" }}元</li>
+				<li>商&nbsp;报&nbsp;提&nbsp;成：{{ sbsalary|currency '' "2" }}元</li>
+				<li>都市报提成：{{ dsbsalary|currency '' "2" }}元</li>
+				<li>总&emsp;业&emsp;绩：{{allsalary|currency '' "2"}}元</li>
+			</ul>
+		</div>
+		<footer class="foot">
+			<a class="btn-calculate" href="#" @click.stop.prevent="btn">立即计算</a>
+		</footer>
+	</div>
+	<!-- build:js ../js/main.min.js?rev=@@hash -->
+	<script src="../js/zepto.min.js?rev=@@hash"></script>
+	<script src="../js/vue.js?rev=@@hash"></script>
+	<script src="../js/style.js?rev=@@hash"></script>
+	<!-- endbuild -->
+</body>
+</html>
