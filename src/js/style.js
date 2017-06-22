@@ -1,10 +1,12 @@
-	document.body.addEventListener("touchmove",function(a){a.preventDefault()},!1);
+		document.body.addEventListener("touchmove",function(a){a.preventDefault()},!1);
 	// document.querySelector(".main").addEventListener("touchmove",function(a){a.stopPropagation()},!1);
 	var vm = new Vue({
 		el: '#app',
 		data: {
 			yes:true,
 			no:false,
+			password:'',
+			success:false,
 			basesalary:'',
 			rb:'0',
 			rbsalary:'',
@@ -18,6 +20,9 @@
 			salary:''
 		},
 		ready: function () { 
+			if (localStorage.success) {
+				this.success=localStorage.success;
+			}
 			document.querySelector(".load").style.display="none";
 			document.querySelector(".wrap").style.opacity="1";
 			if(localStorage.basesalary){
@@ -57,9 +62,43 @@
 					this.alerttxt("重置数据成功")
 				}
 			},
+			btnclose:function(){
+				document.querySelector(".adide-bg").className="adide-bg";
+			},
+			btnon:function(){
+				if(this.password){
+					if (this.password==localStorage.num) {
+						this.alerttxt("激活成功");
+						document.querySelector(".adide-bg").className="adide-bg";
+						this.success=localStorage.success=true;
+					}
+					else{
+						this.alerttxt("激活码错误");
+					}
+				}
+				else{
+					this.alerttxt("请输入激活码");
+				}
+			},
 			btn:function(){
 				var ua=navigator.userAgent.toLowerCase();
 				if ("micromessenger"!=ua.match(/MicroMessenger/i)) return this.alerttxt("请在微信中操作"),!1;
+				var wl=window.localStorage;
+				if (!this.success) {
+					document.querySelector(".adide-bg").className+=" active";
+					this.password='';
+					if(wl&&!localStorage.num){
+						var num=""; 
+						for(var i=0;i<5;i++) 
+						{ 
+							num+=Math.floor(Math.random()*10); 
+						} 
+						localStorage.num=num;
+					}
+					var str = new Base64().encode(localStorage.num);  
+					document.getElementById("num").innerHTML=str;
+					return !1;
+				}
 				if (this.basesalary=="") return this.alerttxt("请输入数据"),!1;
 				var _btn=document.querySelector(".btn-calculate");
 				if (this.no==!1) {
@@ -94,7 +133,7 @@
 						break; 
 					}
 					this.salary=parseFloat(this.basesalary)+this.rbsalary+this.sbsalary+this.dsbsalary+parseFloat(this.jjsalary)-parseFloat(this.qjsalary);
-					if(window.localStorage){
+					if(wl){
 						localStorage.basesalary=this.basesalary;
 						localStorage.rb=this.rb;
 						localStorage.sb=this.sb;

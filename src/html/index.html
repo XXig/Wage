@@ -51,9 +51,18 @@
 		<footer class="foot">
 			<a class="btn-calculate" href="#" @click.stop.prevent="btn">立即计算</a>
 		</footer>
+		<div class="adide-bg">
+			<ul class="adide-box xycenter">
+				<a href="#" class="btn-close" @touchstart.stop.prevent="btnclose">&times;</a>
+				<h4><span id="num">--</span></h4>
+				<li><input type="number" v-model="password" placeholder="请输入激活码" Number/></li>
+				<li><a href="#" class="btn-on" @touchstart.stop.prevent="btnon">激活</a></li>
+			</ul>
+		</div>
 	</div>
 	<!-- build:js ../js/main.min.js?rev=@@hash -->
 	<!-- <script src="../js/zepto.min.js?rev=@@hash"></script> -->
+	<script src="../js/base64.js?rev=@@hash"></script>
 	<script src="../js/vue.js?rev=@@hash"></script>
 	<script src="../js/style.js?rev=@@hash"></script>
 	<!-- endbuild -->

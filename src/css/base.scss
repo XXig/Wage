@@ -4,6 +4,7 @@
 	}
 	html,body{@include wh;-webkit-text-size-adjust:100%;-webkit-overflow-scrolling:touch}body{font:normal 12px/1.5 "Microsoft YaHei",Helvetica,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}*{box-sizing:border-box}ul,ol,li{list-style-type:none}html,body,div,ul,ol,li,p,b,dl,dt,dd,table,td,th,input,button,textarea,pre,img,form,select,h1,h2,h3,h4,h5,h6,header,section,nav,footer{margin:0;padding:0}header,section,footer,aside,nav,article,figure{display:block}a{-webkit-tap-highlight-color:transparent;text-decoration:none;color:inherit;cursor:pointer}a:focus,input:focus{-webkit-tap-highlight-color:transparent}a:visited{color:inherit}img{-ms-interpolation-mode:bicubic;border:none}
 	::-webkit-scrollbar{width:2px}::-webkit-scrollbar-thumb{border-radius:5px;-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.5)}
+	input{outline:none;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
 	.xcenter{left:50%;transform:translate3d(-50%,0,0)}
 	.ycenter{top:50%;transform:translate3d(0,-50%,0)}
 	.xycenter{top:50%;left:50%;transform:translate3d(-50%,-50%,0)}
@@ -32,7 +33,7 @@
 		background-color: #000;
 		color:#fff;
 		font-size: .14rem;
-		z-index: 1;
+		z-index: 4;
 		animation:fadeIn .5s both linear;
 		display: none;
 	}
@@ -119,7 +120,6 @@
 			}
 			::-webkit-input-placeholder{color:#ccc}:-moz-placeholder {color:#ccc}::-moz-placeholder{color:#ccc}:-ms-input-placeholder{color:#ccc} input::-webkit-input-placeholder {color:#ccc}input:focus::-webkit-input-placeholder{opacity:0}
 			input{
-				outline:none;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;
 				width:8em;
 				height:.36rem;
 				line-height: .36rem;
@@ -167,4 +167,78 @@
 				opacity: .7;
 			}
 		}
+	}
+	.adide-bg{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top:0;
+		left: 0;
+		background-color: rgba(0,0,0,.6);
+		transition: visibility .25s;
+		z-index: 3;
+		visibility: hidden;
+		overflow: hidden;
+		.adide-box{
+			position: relative;
+			width: 70%;
+			top:45%;
+			border-radius: .05rem;
+			background-color: #fff;
+			box-shadow: 0 .02rem .02rem rgba(0,0,0,.1);
+			padding: .2rem;
+			line-height: .28rem;
+			transition: opacity .25s;
+			.btn-close{
+				display: block;
+				width: .5rem;
+				height: .5rem;
+				color:#888;
+				font-size: .3rem;
+				text-align: center;
+				line-height: .5rem;
+				position: absolute;
+				top:-.1rem;
+				right:0;
+				z-index: 1;
+			}
+			h4{
+				margin: .2rem auto;
+				color:#ffa724;
+				font-size: .2rem;
+				text-align: center;
+			}
+			li{
+				text-align: center;
+			}
+			input{
+				width: 80%;
+				margin: 0 auto;
+				height:.36rem;
+				line-height: .36rem;
+				border-radius: 0;
+				border:none;
+				border-bottom: 1px solid #ccc;
+				color:#555;
+				font-size: 15px;
+			}
+			.btn-on{
+				display: block;
+				width: 80%;
+				margin: .3rem auto 0;
+				border-radius: .05rem;
+				background-color: #e25247;
+				color:#fff;
+				font-size: .15rem;
+				height: .38rem;
+				line-height: .38rem;
+				&:active{
+					opacity: .7;
+				}
+			}
+		}
+	}
+	.adide-bg.active {
+		transition: none;
+		visibility: visible;
 	}

@@ -33,7 +33,7 @@ gulp.task('cssmin',function () {
 
 
 gulp.task('jsmin', function () {
-	return gulp.src(['!'+ srclj+'/js/zepto.min.js',srclj+'/js/vue.js','!'+ srclj+'/js/resLoader.min.js',srclj+'/js/style.js','!'+srclj+'/js/{1,3}.js'])//除了1、3 
+	return gulp.src(['!'+ srclj+'/js/zepto.min.js',srclj+'/js/base64.js',srclj+'/js/vue.js','!'+ srclj+'/js/resLoader.min.js',srclj+'/js/style.js','!'+srclj+'/js/{1,3}.js'])//除了1、3 
 	.pipe($.changed(distlj+'/js')) 
 	.pipe($.concat('main.min.js'))
 	.pipe(gulp.dest(srclj+'/js'))
