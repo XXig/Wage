@@ -55,6 +55,7 @@
 		transition: all .5s linear;
 	}
 	.header{
+		position: relative;
 		height: .5rem;
 		line-height: .5rem;
 		background-color: #00bbee;
@@ -67,6 +68,18 @@
 			font-size: 12px;
 			font-weight: normal;
 			opacity: .8;
+		}
+		.btn-nav{
+			position: absolute;
+			display: block;
+			width: .8rem;
+			height: 100%;
+			top:0;
+			right: 0;
+			font-size: .26rem;
+			&:active{
+				opacity: .5;
+			}
 		}
 	}
 	.main{
@@ -99,6 +112,7 @@
 			}
 		}
 		.txt{
+			margin-bottom: .1rem;
 			li{
 				margin-bottom: .2rem;
 				font-size: 14px;
@@ -116,8 +130,8 @@
 			}
 		}
 		.result{
-			margin-top:.1rem;
-			margin-bottom:.1rem;
+			margin-top:.2rem;
+			margin-bottom:.2rem;
 			border:1px solid #f9c16e;
 			background-color: #fff0c1;
 			line-height: .32rem;
@@ -125,10 +139,13 @@
 				padding-bottom: .1rem;
 				margin-bottom: .1rem;
 				border-bottom:1px dotted #ccc;
+				span{
+					font-size: .18rem;
+				}
 			}
 			span{
 				color:#ff3434;
-				font-size: .18rem;
+				font-weight: bold;
 			}
 		}
 	}

@@ -14,6 +14,7 @@
 			dsbsalary:'',
 			jjsalary:'',
 			allsalary:'',
+			qjsalary:'0',
 			salary:''
 		},
 		ready: function () { 
@@ -24,6 +25,7 @@
 				this.rb=localStorage.rb;
 				this.sb=localStorage.sb;
 				this.dsb=localStorage.dsb;
+				this.qjsalary=localStorage.qjsalary;
 			}
 		},
 		methods:{
@@ -38,6 +40,21 @@
 						click=!0;
 						_alert.style.display="none";
 					},450)
+				}
+			},
+			btnnav:function(){
+				if(this.basesalary||this.rb!=0||this.sb!=0||this.dsb!=0||this.qjsalary!=0){
+					localStorage.removeItem("basesalary");
+					localStorage.removeItem("rb");
+					localStorage.removeItem("sb");
+					localStorage.removeItem("dsb");
+					localStorage.removeItem("qjsalary");
+					this.basesalary='';
+					this.rb=0;
+					this.sb=0;
+					this.dsb=0;
+					this.qjsalary=0;
+					this.alerttxt("重置数据成功")
 				}
 			},
 			btn:function(){
@@ -76,12 +93,13 @@
 						this.jjsalary=0;
 						break; 
 					}
-					this.salary=parseFloat(this.basesalary)+this.rbsalary+this.sbsalary+this.dsbsalary+parseFloat(this.jjsalary);
+					this.salary=parseFloat(this.basesalary)+this.rbsalary+this.sbsalary+this.dsbsalary+parseFloat(this.jjsalary)-parseFloat(this.qjsalary);
 					if(window.localStorage){
 						localStorage.basesalary=this.basesalary;
 						localStorage.rb=this.rb;
 						localStorage.sb=this.sb;
 						localStorage.dsb=this.dsb;
+						localStorage.qjsalary=this.qjsalary;
 					}
 				}
 				else{
