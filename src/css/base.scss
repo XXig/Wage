@@ -117,6 +117,11 @@
 			li{
 				margin-bottom: .2rem;
 				font-size: 14px;
+				span{
+					display: inline-block;
+					width: 6em;
+					text-align: right;
+				}
 			}
 			::-webkit-input-placeholder{color:#ccc}:-moz-placeholder {color:#ccc}::-moz-placeholder{color:#ccc}:-ms-input-placeholder{color:#ccc} input::-webkit-input-placeholder {color:#ccc}input:focus::-webkit-input-placeholder{opacity:0}
 			input{
@@ -139,13 +144,17 @@
 				padding-bottom: .1rem;
 				margin-bottom: .1rem;
 				border-bottom:1px dotted #ccc;
-				span{
+				strong{
 					font-size: .18rem;
 				}
 			}
 			span{
+				display: inline-block;
+				width: 6em;
+				text-align: right;
+			}
+			strong{
 				color:#ff3434;
-				font-weight: bold;
 			}
 		}
 	}

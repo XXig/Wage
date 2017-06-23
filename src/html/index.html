@@ -23,29 +23,29 @@
 		<div class="main">
 			<ul v-show="yes" class="tip">
 				<h4>基本工资：</h4>
-				<li>底薪+提成+奖金-请假</li>
+				<li><span>底薪+提成+奖金-请假</span></li>
 				<h4>提成系数：</h4>
 				<li>日报：<span>0.1</span>&emsp;&emsp;商报：<span>0.14</span>&emsp;&emsp;都市报：<span>0.12</span></li>
 			</ul>
 			<ul v-show="yes" class="txt">
-				<li>底&nbsp;薪&nbsp;工&nbsp;资：<input type="number" v-model="basesalary" placeholder="请输入底薪" Number/>元</li>
-				<li>日&nbsp;报&nbsp;业&nbsp;绩：<input type="number" v-model="rb" placeholder="--" Number/>元</li>
-				<li>商&nbsp;报&nbsp;业&nbsp;绩：<input type="number" v-model="sb" placeholder="--" Number/>元</li>
-				<li>都市报业绩：<input type="number" v-model="dsb" placeholder="--" Number/>元</li>
-				<li>请&nbsp;假&nbsp;扣&nbsp;除：<input type="number" v-model="qjsalary" placeholder="--" Number/>元</li>
+				<li><span>底 薪 工 资：</span><input type="number" v-model="basesalary" placeholder="请输入底薪" Number/>元</li>
+				<li><span>日 报 业 绩：</span><input type="number" v-model="rb" placeholder="--" Number/>元</li>
+				<li><span>商 报 业 绩：</span><input type="number" v-model="sb" placeholder="--" Number/>元</li>
+				<li><span>都市报业绩：</span><input type="number" v-model="dsb" placeholder="--" Number/>元</li>
+				<li><span>请 假 扣 除：</span><input type="number" v-model="qjsalary" placeholder="--" Number/>元</li>
 			</ul>
 			<ul v-show="no" class="result">
-				<h4 class="line">工资=<span>{{salary|currency '' "2"}}元</span><br>底薪+提成+奖金-请假</h4>
-				<li>底&nbsp;薪&nbsp;工&nbsp;资：<span>{{ basesalary|currency '' "2"}}元</span></li>
-				<li>日&nbsp;报&nbsp;业&nbsp;绩：{{ rb }}元</li>
-				<li>&emsp;----提&nbsp;成：{{ rbsalary|currency '' "2"}}元</li>
-				<li>商&nbsp;报&nbsp;业&nbsp;绩：{{ sb }}元</li>
-				<li>&emsp;----提&nbsp;成：{{ sbsalary|currency '' "2"}}元</li>
-				<li>都市报业绩：{{ dsb }}元</li>
-				<li>&emsp;----提&nbsp;成：{{ dsbsalary|currency '' "2"}}元</li>
-				<li>总&emsp;提&emsp;成：<span>{{sbsalary+rbsalary+dsbsalary|currency '' "2"}}元</span></li>
-				<li>总&emsp;业&emsp;绩：{{allsalary|currency '' "2"}}元&emsp;/&nbsp;奖金：<span>{{jjsalary|currency '' "2"}}元</li>
-				<li>请&nbsp;假&nbsp;扣&nbsp;除：<span>{{qjsalary}}元</span></li>
+				<h4 class="line">工资=<strong>{{salary|currency '' "2"}}元</strong><br>底薪+提成+奖金-请假</h4>
+				<li><span>底 薪 工 资：</span><strong>{{basesalary|currency '' "2"}}元</strong></li>
+				<li><span>日 报 业 绩：</span>{{rb|currency '' "2"}}元</li>
+				<li><span>--提&emsp;成 ：</span>{{rbsalary|currency '' "2"}}元</li>
+				<li><span>商 报 业 绩：</span>{{sb|currency '' "2"}}元</li>
+				<li><span>--提&emsp;成 ：</span>{{ sbsalary|currency '' "2"}}元</li>
+				<li><span>都市报业绩：</span>{{dsb|currency '' "2"}}元</li>
+				<li><span>--提&emsp;成 ：</span>{{dsbsalary|currency '' "2"}}元</li>
+				<li><span>--总提成 ：</span><strong>{{sbsalary+rbsalary+dsbsalary|currency '' "2"}}元</strong></li>
+				<li><span>--总业绩 ：</span>{{allsalary|currency '' "2"}}元&ensp;/&ensp;奖金：<strong>{{jjsalary|currency '' "2"}}元</strong></li>
+				<li><span>请 假 扣 除：</span><strong>{{qjsalary}}元</strong></li>
 			</ul>
 		</div>
 		<footer class="foot">
@@ -55,7 +55,7 @@
 			<ul class="adide-box xycenter">
 				<a href="#" class="btn-close" @touchstart.stop.prevent="btnclose">&times;</a>
 				<h4><span id="num">--</span></h4>
-				<li><input type="number" v-model="password" placeholder="请输入激活码" Number/></li>
+				<li><input type="tel" v-model="password" placeholder="请输入激活码" Number/></li>
 				<li><a href="#" class="btn-on" @touchstart.stop.prevent="btnon">激活</a></li>
 			</ul>
 		</div>

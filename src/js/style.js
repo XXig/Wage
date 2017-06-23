@@ -84,21 +84,21 @@
 				var ua=navigator.userAgent.toLowerCase();
 				if ("micromessenger"!=ua.match(/MicroMessenger/i)) return this.alerttxt("请在微信中操作"),!1;
 				var wl=window.localStorage;
-				if (!this.success) {
-					document.querySelector(".adide-bg").className+=" active";
-					this.password='';
-					if(wl&&!localStorage.num){
-						var num=""; 
-						for(var i=0;i<5;i++) 
-						{ 
-							num+=Math.floor(Math.random()*10); 
-						} 
-						localStorage.num=num;
-					}
-					var str = new Base64().encode(localStorage.num);  
-					document.getElementById("num").innerHTML=str;
-					return !1;
-				}
+				// if (!this.success) {
+				// 	document.querySelector(".adide-bg").className+=" active";
+				// 	this.password='';
+				// 	if(wl&&!localStorage.num){
+				// 		var num=""; 
+				// 		for(var i=0;i<5;i++) 
+				// 		{ 
+				// 			num+=Math.floor(Math.random()*10); 
+				// 		} 
+				// 		localStorage.num=num;
+				// 	}
+				// 	var str = new Base64().encode(localStorage.num);  
+				// 	document.getElementById("num").innerHTML=str;
+				// 	return !1;
+				// }
 				if (this.basesalary=="") return this.alerttxt("请输入数据"),!1;
 				var _btn=document.querySelector(".btn-calculate");
 				if (this.no==!1) {
