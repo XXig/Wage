@@ -96,7 +96,7 @@
 						localStorage.num=num;
 					}
 					var str = new Base64().encode(localStorage.num);  
-					document.getElementById("num").innerHTML=str;
+					document.getElementById("num").innerHTML=str.split("=")[0];
 					return !1;
 				}
 				if (this.basesalary=="") return this.alerttxt("请输入数据"),!1;
