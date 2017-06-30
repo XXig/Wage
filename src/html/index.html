@@ -23,7 +23,7 @@
 		<div class="main">
 			<ul v-show="yes" class="tip">
 				<h4>基本工资：</h4>
-				<li><span>底薪+提成+奖金-请假</span></li>
+				<li><span>底薪-请假+提成+奖金</span></li>
 				<h4>提成系数：</h4>
 				<li>日报：<span>0.1</span>&emsp;&emsp;商报：<span>0.14</span>&emsp;&emsp;都市报：<span>0.12</span></li>
 			</ul>
@@ -32,20 +32,22 @@
 				<li><span>日 报 业 绩：</span><input type="number" v-model="rb" placeholder="--" Number/>元</li>
 				<li><span>商 报 业 绩：</span><input type="number" v-model="sb" placeholder="--" Number/>元</li>
 				<li><span>都市报业绩：</span><input type="number" v-model="dsb" placeholder="--" Number/>元</li>
-				<li><span>请 假 扣 除：</span><input type="number" v-model="qjsalary" placeholder="--" Number/>元</li>
+				<li><span>请 假 天 数：</span><select v-model="qjday"><option v-for="option of qjdayoptions" :value="option.value">{{option.text}}</option></select>天
+				</li>
 			</ul>
 			<ul v-show="no" class="result">
-				<h4 class="line">工资=<strong>{{salary|currency '' "2"}}元</strong><br>底薪+提成+奖金-请假</h4>
-				<li><span>底 薪 工 资：</span><strong>{{basesalary|currency '' "2"}}元</strong></li>
+				<h4 class="line">工资=<strong>{{salary|currency '' "2"}}元</strong><br>底薪-请假+提成+奖金</h4>
+				<li><span>底 薪 工 资：</span>{{basesalary}}元&ensp;&ensp;/&ensp;奖金：<strong>{{basejj}}元</strong></li>
+				<li><span>请 假 天 数：</span>{{cqjday}}天&ensp;&ensp;/&ensp;扣除：<strong>{{qjsalary|currency '' "2"}}元</strong></li>
+				<li class="line"><span>合 计 底 薪：</span><strong>{{parseFloat(basesalary)+parseFloat(basejj)-parseFloat(qjsalary)|currency '' "2"}}元</strong></li>
 				<li><span>日 报 业 绩：</span>{{rb|currency '' "2"}}元</li>
-				<li><span>--提&emsp;成 ：</span>{{rbsalary|currency '' "2"}}元</li>
+				<li><span>--提&emsp;&ensp;成 ：</span><strong>{{rbsalary|currency '' "2"}}元</strong></li>
 				<li><span>商 报 业 绩：</span>{{sb|currency '' "2"}}元</li>
-				<li><span>--提&emsp;成 ：</span>{{ sbsalary|currency '' "2"}}元</li>
+				<li><span>--提&emsp;&ensp;成 ：</span><strong>{{sbsalary|currency '' "2"}}元</strong></li>
 				<li><span>都市报业绩：</span>{{dsb|currency '' "2"}}元</li>
-				<li><span>--提&emsp;成 ：</span>{{dsbsalary|currency '' "2"}}元</li>
-				<li><span>--总提成 ：</span><strong>{{sbsalary+rbsalary+dsbsalary|currency '' "2"}}元</strong></li>
-				<li><span>--总业绩 ：</span>{{allsalary|currency '' "2"}}元&ensp;/&ensp;奖金：<strong>{{jjsalary|currency '' "2"}}元</strong></li>
-				<li><span>请 假 扣 除：</span><strong>{{qjsalary}}元</strong></li>
+				<li class="line"><span>--提&emsp;&ensp;成 ：</span><strong>{{dsbsalary|currency '' "2"}}元</strong></li>
+				<li><span>合 计 提 成：</span><strong>{{sbsalary+rbsalary+dsbsalary|currency '' "2"}}元</strong></li>
+				<li><span>合 计 业 绩：</span>{{allsalary|currency '' "2"}}元&ensp;&ensp;/&ensp;奖金：<strong>{{jjsalary|currency '' "2"}}元</strong></li>
 			</ul>
 		</div>
 		<footer class="foot">
